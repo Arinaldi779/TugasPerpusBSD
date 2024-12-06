@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .bg-gradasi {
+    @apply bg-gradient-to-r from-yellow-100 to-amber-300;
+  }
+
+  .text-gradasi {
+    @apply bg-gradient-to-r from-yellow-100 to-amber-300 bg-clip-text text-transparent;
+  }
+}
