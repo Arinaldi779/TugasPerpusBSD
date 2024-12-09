@@ -2,11 +2,6 @@
 // if($_SESSION['status']==""){
 //     header("location:../index.php?alert=belum_login");
 // }
-require '../logic/koneksi.php';
-$id = $_GET['id'];
-$queryEditProfile = mysqli_query($conn ,"SELECT * FROM anggotaLogin_view WHERE ID_ANGGOTA = '$id'");
-$dataEditProfile  = mysqli_fetch_assoc($queryEditProfile);
-$Profile = $dataEditProfile;
 // var_dump($dataEditProfile);exit;
 ?>
 
@@ -37,7 +32,7 @@ $Profile = $dataEditProfile;
                     <label for="nama" class="block text-sm font-medium text-black mb-2">Nama</label>
                     <input type="text" id="nama" name="nama" placeholder="Masukkan nama"
                         class="w-full px-4 py-2 bg-sky-400 placeholder-black text-black border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                        value="<?php echo $Profile['NAMA'];?>">
+                        value="<?php echo $data['NAMA'];?>">
                 </div>
 
                 <!-- Nomor Telepon -->
@@ -45,7 +40,7 @@ $Profile = $dataEditProfile;
                     <label for="notelp" class="block text-sm font-medium text-black mb-2">Nomor Telepon</label>
                     <input type="tel" id="notelp" name="notelp" placeholder="Masukkan nomor telepon"
                         class="w-full px-4 py-2 bg-sky-400 placeholder-black text-black border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
-                        value="<?php echo $Profile['NOTELP'];?>">
+                        value="<?php echo $data['NOTELP'];?>">
                 </div>
             </div>
 
@@ -55,7 +50,7 @@ $Profile = $dataEditProfile;
                 <div class="mb-4">
                     <label for="alamat" class="block text-sm font-medium text-black mb-2">Alamat</label>
                     <textarea id="alamat" name="alamat" rows="3" placeholder="Masukkan alamat"
-                        class="w-full px-4 py-2 bg-sky-400 placeholder-black text-black border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"><?php echo $Profile['ALAMAT'];?></textarea>
+                        class="w-full px-4 py-2 bg-sky-400 placeholder-black text-black border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"><?php echo $data['ALAMAT'];?></textarea>
                 </div>
             </div>
 
@@ -70,7 +65,7 @@ $Profile = $dataEditProfile;
                         class="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
             </div>
-            <input type="hidden" name="fotoLama" value="<?php echo $_SESSION['foto']; ?>">
+            <input type="hidden" name="fotoLama" value="<?php echo $data['foto']; ?>">
         </div>
 
         <!-- Tombol Submit -->

@@ -43,6 +43,11 @@ if ($_FILES['gambar']['error'] !== UPLOAD_ERR_NO_FILE) {
         exit;
     }
 
+     // Hapus file lama jika ada
+    if (file_exists('../src/uploadAnggota/' . $fotoLama)) {
+        unlink('../src/uploadAnggota/' . $fotoLama);
+    }
+
     // Buat nama file baru untuk disimpan
     $namaFileBaru = uniqid() . '.' . $ekstensiGambar;
 

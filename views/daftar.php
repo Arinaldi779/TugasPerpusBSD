@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="../src/css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
 
 <body class="bg-slate-200">
@@ -38,7 +40,8 @@
                     class="w-full py-2 bg-yellow-200 text-black rounded-md hover:bg-amber-400 transition duration-100 font-semibold">
                     Daftar
                 </button>
-                <p class="text-white">Sudah punya akun? <a href="">Login disini</a></p>
+                <p class="text-white">Sudah punya akun? <a href="../index.php" class="hover:text-yellow-200">Login
+                        disini</a></p>
             </form>
         </div>
     </div>

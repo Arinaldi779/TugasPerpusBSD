@@ -15,6 +15,9 @@ module.exports = {
         secondary: "#0A97B0",
       },
     },
+    screens: {
+      sm: "500px",
+    },
   },
   plugins: [],
 };

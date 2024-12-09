@@ -1,6 +1,15 @@
 <?php
 session_start();
 // Ambil parameter "page" dari URL
+require '../logic/koneksi.php';
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $queryAnggota = mysqli_query($conn ,"SELECT * FROM anggotaLogin_view WHERE ID_ANGGOTA = '$id'");
+    $dataAnggota  = mysqli_fetch_assoc($queryAnggota);
+    $data = $dataAnggota;
+}
+
+
 $page = isset($_GET['page']) ? $_GET['page'] : 'tableLog';
 $file = '';
 switch ($page) {
@@ -41,6 +50,7 @@ if (!file_exists($file)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="../src/css/style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="bg-slate-200">
@@ -54,8 +64,13 @@ if (!file_exists($file)) {
             </div>
             <!-- Gambar Profil -->
             <div class="flex items-center px-4">
-                <a href="?page=profile">
-                    <img src="" alt="Profile Picture" class="rounded-full bg-gradasi bg-cover w-12 h-12">
+                <a href="../logic/logout.php"
+                    class="px-4 py-2 text-gradasi font-semibold mx-2 rounded-md hover:bg-slate-400">
+                    Logout
+                </a>
+                <a href="?page=profile&id=<?php echo $_SESSION['id_anggota']; ?>">
+                    <img src="../src/uploadAnggota/<?php echo $_SESSION['foto']; ?>" alt="Profile Picture"
+                        class="rounded-full bg-gradasi bg-cover w-12 h-12">
                 </a>
             </div>
         </nav>
@@ -65,10 +80,10 @@ if (!file_exists($file)) {
 
     <!-- Section main -->
     <section id="menu" class="pt-28">
-        <div class="container w-full lg:w-3/4 xl:w-2/3 mx-auto">
+        <div class="container w-full lg:w-1/4 sm:1/4 xl:w- mx-auto">
             <div class="flex flex-wrap items-center justify-center">
                 <!-- Card 1 -->
-                <div class="px-4 my-2 w-full sm:w-1/2 lg:w-1/4">
+                <div class="px-4 my-2 w-full sm:w-1/2 md:1/4 lg:w-1/4">
                     <div class="bg-sky-700 h-24 rounded-md">
                         <h3 class="text-color3 font-semibold text-sm text-center">Anggota</h3>
                         <h2 class="text-2xl text-center mt-2 text-color3 font-bold">90</h2>

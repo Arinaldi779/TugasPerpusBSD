@@ -1,6 +1,12 @@
     <section class="py-12 px-4">
-        <div class="container mx-auto">
-            <div class="flex flex-wrap items-center justify-center -mx-4">
+        <div class="container mx-auto  rounded-md">
+            <?php if($_SESSION['status'] == 0) { ?>
+            <a href="?page=editProfile&id=<?php echo $data['ID_ANGGOTA']; ?>"
+                class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-4 py-2 rounded-md shadow-md inline-block">
+                Edit Profile
+            </a>
+            <?php } ?>
+            <div class="flex flex-wrap items-center justify-center -mx-4 mt-5 pt-5">
                 <!-- Card 1 -->
                 <div class="px-4 w-full md:w-1/2 lg:w-1/4 mb-4">
                     <div class="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">

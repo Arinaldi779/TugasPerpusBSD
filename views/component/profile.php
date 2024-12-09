@@ -2,11 +2,7 @@
 // if($_SESSION['status']==""){
 //     header("location:../index.php?alert=belum_login");
 // }
-require '../logic/koneksi.php';
-$id = $_GET['id'];
-$queryProfile = mysqli_query($conn ,"SELECT * FROM anggotaLogin_view WHERE ID_ANGGOTA = '$id'");
-$dataProfile  = mysqli_fetch_assoc($queryProfile);
-$Profile = $dataProfile;
+
 // var_dump($Profile);exit;
 ?>
 
@@ -15,12 +11,12 @@ $Profile = $dataProfile;
         <!-- Profile Image -->
         <div class="p-6 bg-gradient-to-r from-sky-400 to-blue-500 text-center">
             <div class="w-32 h-32 mx-auto rounded-full overflow-hidden shadow-lg">
-                <img src="../src/uploadAnggota/<?php echo $Profile['FOTO']; ?>" alt="Foto Anggota"
+                <img src="../src/uploadAnggota/<?php echo $data['FOTO']; ?>" alt="Foto Anggota"
                     class="w-full h-full object-cover">
             </div>
             <h3 class="mt-4 text-xl font-semibold text-white">Foto Anggota</h3>
             <div class="mt-4">
-                <a href="?page=editProfile&id=<?php echo $Profile['ID_ANGGOTA']; ?>"
+                <a href="?page=editProfile&id=<?php echo $data['ID_ANGGOTA']; ?>"
                     class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-4 py-2 rounded-md shadow-md inline-block">
                     Edit Profile
                 </a>
@@ -38,23 +34,23 @@ $Profile = $dataProfile;
                 <!-- Detail Item -->
                 <div>
                     <label class="block font-medium text-gray-500">Id Anggota</label>
-                    <p class="text-gray-700"><?php echo $Profile['ID_ANGGOTA']; ?></p>
+                    <p class="text-gray-700"><?php echo $data['ID_ANGGOTA']; ?></p>
                 </div>
                 <div>
                     <label class="block font-medium text-gray-500">Email</label>
-                    <p class="text-gray-700"><?php echo $Profile['EMAIL']; ?></p>
+                    <p class="text-gray-700"><?php echo $data['EMAIL']; ?></p>
                 </div>
                 <div>
                     <label class="block font-medium text-gray-500">Nama Lengkap</label>
-                    <p class="text-gray-700"><?php echo $Profile['NAMA']; ?></p>
+                    <p class="text-gray-700"><?php echo $data['NAMA']; ?></p>
                 </div>
                 <div>
                     <label class="block font-medium text-gray-500">Alamat</label>
-                    <p class="text-gray-700"><?php echo $Profile['ALAMAT']; ?></p>
+                    <p class="text-gray-700"><?php echo $data['ALAMAT']; ?></p>
                 </div>
                 <div>
                     <label class="block font-medium text-gray-500">Nomor Telepon</label>
-                    <p class="text-gray-700"><?php echo $Profile['NOTELP']; ?></p>
+                    <p class="text-gray-700"><?php echo $data['NOTELP']; ?></p>
                 </div>
             </div>
         </div>
