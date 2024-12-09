@@ -10,8 +10,8 @@ switch ($page) {
     case 'profile':
         $file = 'component/profile.php';
         break;
-    case 'cardbook':
-        $file = 'component/cardBook.php';
+    case 'editProfile':
+        $file = 'component/editProfile.php';
         break;
     case 'cardbook':
         $file = 'component/cardBook.php';
