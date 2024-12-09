@@ -3,7 +3,8 @@
         <!-- Profile Image -->
         <div class="p-6 bg-gradient-to-r from-sky-400 to-blue-500 text-center">
             <div class="w-32 h-32 mx-auto rounded-full overflow-hidden shadow-lg">
-                <img src="upload-anggota/placeholder.jpg" alt="Foto Anggota" class="w-full h-full object-cover">
+                <img src="upload-anggota/<?php echo $_SESSION['foto']; ?>.jpg" alt="Foto Anggota"
+                    class="w-full h-full object-cover">
             </div>
             <h3 class="mt-4 text-xl font-semibold text-white">Foto Anggota</h3>
             <div class="mt-4">
@@ -25,23 +26,23 @@
                 <!-- Detail Item -->
                 <div>
                     <label class="block font-medium text-gray-500">Id Anggota</label>
-                    <p class="text-gray-700">A2024001</p>
+                    <p class="text-gray-700"><?php echo $_SESSION['id_anggota']; ?></p>
                 </div>
                 <div>
                     <label class="block font-medium text-gray-500">Email</label>
-                    <p class="text-gray-700">anggota@example.com</p>
+                    <p class="text-gray-700"><?php echo $_SESSION['email']; ?></p>
                 </div>
                 <div>
                     <label class="block font-medium text-gray-500">Nama Lengkap</label>
-                    <p class="text-gray-700">Nama Anggota</p>
+                    <p class="text-gray-700"><?php echo $_SESSION['nama']; ?></p>
                 </div>
                 <div>
                     <label class="block font-medium text-gray-500">Alamat</label>
-                    <p class="text-gray-700">Jl. Contoh Alamat, Kota</p>
+                    <p class="text-gray-700"><?php echo $_SESSION['alamat']; ?></p>
                 </div>
                 <div>
                     <label class="block font-medium text-gray-500">Nomor Telepon</label>
-                    <p class="text-gray-700">08123456789</p>
+                    <p class="text-gray-700"><?php echo $_SESSION['notelp']; ?></p>
                 </div>
             </div>
         </div>

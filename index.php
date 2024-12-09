@@ -1,56 +1,3 @@
-<?php
-// // berfungsi mengaktifkan session
-// session_start();
-
-// // berfungsi menghubungkan koneksi ke database
-// require 'logic/koneksi.php';
-
-// // berfungsi menangkap data yang dikirim
-// $email = $_POST['email'];
-// $pass = $_POST['password'];
-// $passmd5 = md5($pass);
-// // berfungsi menyeleksi data user dengan username dan password yang sesuai
-// $sql = mysqli_query($conn,"SELECT * FROM login  WHERE email = '$email' AND password ='$passmd5'");
-// $cek = mysqli_num_rows($sql);		
-
-// // berfungsi mengecek apakah username dan password ada pada database
-// if($cek > 0){
-// 	$data 		= mysqli_fetch_assoc($sql);	
-	// var_dump($data["nip"]);exit;	
-
-	// $_SESSION['id']					=	$data['id'];
-	// $_SESSION['nis'] 				= 	$data['nis'];
-	// $_SESSION['nip'] 				= 	$data['nip'];
-	// $_SESSION['nama_anggota'] 		= 	$data['nama_anggota'];
-	// $_SESSION['jk_anggota'] 		= 	$data['jk_anggota'];
-	// $_SESSION['alamat_anggota']  	= 	$data['alamat_anggota'];
-	// $_SESSION['jurusan_anggota'] 	= 	$data['jurusan_anggota'];
-	// $_SESSION['no_telp_anggota'] 	= 	$data['no_telp_anggota'];
-	// $_SESSION['email'] 				=   $data['email'];
-	// $_SESSION['username']			=   $data['username'];
-	// $_SESSION['level'] 				=   $data['level'];	
-	// $_SESSION['gambar']				=	$data['gambar'];	
-
-	// berfungsi mengecek jika user login sebagai admin
-	// if($data['level']=="admin"){
-	// 	echo "
-	// 	<script>alert('Selamat Datang Admin {$data["nama_anggota"]}');
-  //       window.location.href = '../dashboard'</script>
-	// 	";
-	// // berfungsi mengecek jika user login sebagai user
-	// }else if($data['level']=="user"){
-	// 	// berfungsi mengalihkan ke halaman user
-	// 	echo "
-	// 	<script>alert('Selamat Datang User {$data["nama_anggota"]}');
-  //       window.location.href = '../dashboard'</script>
-	// 	";
-		
-	// }
-// }else{
-// 	header("location:../index.php?alert=gagal");
-// };
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -65,7 +12,7 @@
     <div class="container relative mx-auto mt-11 p-6 rounded-lg bg-primary shadow-lg w-96 h-1/2">
         <h2 class="text-center text-3xl font-semibold text-amber-100 mb-6">Login</h2>
         <div class="flex flex-wrap justify-center">
-            <form class="login-form w-full max-w-md space-y-4" action="process_login.php" method="POST">
+            <form class="login-form w-full max-w-md space-y-4" action="logic/loginLogic.php" method="POST">
                 <!-- Email -->
                 <div class="flex flex-col">
                     <label for="email" class="text-amber-100 font-medium">Email:</label>
