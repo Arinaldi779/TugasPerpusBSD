@@ -65,7 +65,9 @@
                         class="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
             </div>
-            <input type="hidden" name="fotoLama" value="<?php echo $data['foto']; ?>">
+            <?php if(isset($data['FOTO'])) { ?>
+            <input type="hidden" name="gambarLama" value="<?php echo $data['FOTO']; ?>">
+            <?php } ?>
         </div>
 
         <!-- Tombol Submit -->

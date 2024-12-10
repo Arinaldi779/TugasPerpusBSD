@@ -1,9 +1,9 @@
     <section class="py-12 px-4">
         <div class="container mx-auto  rounded-md">
             <?php if($_SESSION['status'] == 0) { ?>
-            <a href="?page=editProfile&id=<?php echo $data['ID_ANGGOTA']; ?>"
+            <a href="?page=inputBuku"
                 class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-4 py-2 rounded-md shadow-md inline-block">
-                Edit Profile
+                Input Buku
             </a>
             <?php } ?>
             <div class="flex flex-wrap items-center justify-center -mx-4 mt-5 pt-5">

@@ -14,19 +14,19 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'tableLog';
 $file = '';
 switch ($page) {
     case 'cardbook':
-        $file = 'component/cardBook.php';
+        $file = 'layout/cardBook.php';
         break;
     case 'profile':
-        $file = 'component/profile.php';
+        $file = 'layout/profile.php';
         break;
     case 'editProfile':
-        $file = 'component/editProfile.php';
+        $file = 'layout/editProfile.php';
+        break;
+    case 'inputBuku':
+        $file = 'layout/inputBuku.php';
         break;
     case 'cardbook':
-        $file = 'component/cardBook.php';
-        break;
-    case 'cardbook':
-        $file = 'component/cardBook.php';
+        $file = 'layout/cardBook.php';
         break;
     
     default:
@@ -35,7 +35,7 @@ switch ($page) {
 }
 
 // File layout default
-$file = "component/$page.php";
+$file = "layout/$page.php";
 
 // Periksa apakah file layout ada, jika tidak, gunakan file default
 if (!file_exists($file)) {
@@ -50,7 +50,9 @@ if (!file_exists($file)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="../src/css/style.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
 </head>
 
 <body class="bg-slate-200">
@@ -64,14 +66,17 @@ if (!file_exists($file)) {
             </div>
             <!-- Gambar Profil -->
             <div class="flex items-center px-4">
-                <a href="../logic/logout.php"
-                    class="px-4 py-2 text-gradasi font-semibold mx-2 rounded-md hover:bg-slate-400">
-                    Logout
-                </a>
-                <a href="?page=profile&id=<?php echo $_SESSION['id_anggota']; ?>">
-                    <img src="../src/uploadAnggota/<?php echo $_SESSION['foto']; ?>" alt="Profile Picture"
-                        class="rounded-full bg-gradasi bg-cover w-12 h-12">
-                </a>
+                <div class="dropdown">
+                    <div tabindex="0" role="button" class="m-1">
+                        <img src="../src/uploadAnggota/<?php echo $_SESSION['foto']; ?>" alt="Profile Picture"
+                            class="rounded-full bg-gradasi bg-cover w-12 h-12">
+                    </div>
+                    <ul tabindex="0"
+                        class="dropdown-content menu bg-base-100 mx-10 rounded-md z-[1] w-32 shadow -left-28">
+                        <li><a href="?page=profile&id=<?php echo $_SESSION['id_anggota']; ?>">Profile</a></li>
+                        <li><a href="../logic/logout.php">Logout</a></li>
+                    </ul>
+                </div>
             </div>
         </nav>
     </header>
@@ -80,10 +85,10 @@ if (!file_exists($file)) {
 
     <!-- Section main -->
     <section id="menu" class="pt-28">
-        <div class="container w-full lg:w-1/4 sm:1/4 xl:w- mx-auto">
-            <div class="flex flex-wrap items-center justify-center">
+        <div class="container w-full lg:w-4/5 xl:w-3/4 mx-auto">
+            <div class="flex flex-wrap justify-center">
                 <!-- Card 1 -->
-                <div class="px-4 my-2 w-full sm:w-1/2 md:1/4 lg:w-1/4">
+                <div class="px-4 my-2 w-full sm:w-1/2 md:w-1/2 lg:w-1/4 xl:w-1/4">
                     <div class="bg-sky-700 h-24 rounded-md">
                         <h3 class="text-color3 font-semibold text-sm text-center">Anggota</h3>
                         <h2 class="text-2xl text-center mt-2 text-color3 font-bold">90</h2>
@@ -94,7 +99,7 @@ if (!file_exists($file)) {
                     </div>
                 </div>
                 <!-- Card 2 -->
-                <div class="px-4 my-2 w-full sm:w-1/2 lg:w-1/4">
+                <div class="px-4 my-2 w-full sm:w-1/2 md:w-1/2 lg:w-1/4 xl:w-1/4">
                     <div class="bg-secondary h-24 rounded-md">
                         <h3 class="text-color3 font-semibold text-sm text-center">Buku</h3>
                         <h2 class="text-2xl text-center mt-2 text-color3 font-bold">90</h2>
@@ -105,7 +110,7 @@ if (!file_exists($file)) {
                     </div>
                 </div>
                 <!-- Card 3 -->
-                <div class="px-4 my-2 w-full sm:w-1/2 lg:w-1/4">
+                <div class="px-4 my-2 w-full sm:w-1/2 md:w-1/2 lg:w-1/4 xl:w-1/4">
                     <div class="bg-red-600 h-24 rounded-md">
                         <h3 class="text-color3 font-semibold text-sm text-center">Log Kembali</h3>
                         <h2 class="text-2xl text-center mt-2 text-color3 font-bold">90</h2>
@@ -116,7 +121,7 @@ if (!file_exists($file)) {
                     </div>
                 </div>
                 <!-- Card 4 -->
-                <div class="px-4 my-2 w-full sm:w-1/2 lg:w-1/4">
+                <div class="px-4 my-2 w-full sm:w-1/2 md:w-1/2 lg:w-1/4 xl:w-1/4">
                     <div class="bg-indigo-700 h-24 rounded-md">
                         <h3 class="text-color3 font-semibold text-sm text-center">Peminjaman</h3>
                         <h2 class="text-2xl text-center mt-2 text-color3 font-bold">90</h2>
@@ -129,6 +134,8 @@ if (!file_exists($file)) {
             </div>
         </div>
     </section>
+
+
 
 
     <!-- Section end -->
@@ -145,7 +152,23 @@ if (!file_exists($file)) {
     <!--  Form -->
 
 
+    <script>
+    document.getElementById('foto').addEventListener('change', function() {
+        const fileName = this.files[0] ? this.files[0].name : "Belum ada file dipilih";
+        document.getElementById('file-name').textContent = fileName;
+    });
 
+    flatpickr("#datepicker", {
+        dateFormat: "Y-m-d", // Format tanggal
+        altInput: true, // Menampilkan input alternatif
+        altFormat: "F j, Y", // Format alternatif
+        defaultDate: "today", // Tanggal default
+        disable: ["2024-12-25", "2025-01-01"], // Contoh tanggal yang dinonaktifkan
+        locale: {
+            firstDayOfWeek: 1, // Senin sebagai hari pertama
+        },
+    });
+    </script>
 </body>
 
 </html>

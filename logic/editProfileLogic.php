@@ -7,7 +7,7 @@ $id_anggota    = $_POST['id_anggota'];
 $nama_anggota  = htmlspecialchars($_POST['nama']);
 $notelp        = htmlspecialchars($_POST['notelp']);
 $alamat        = htmlspecialchars($_POST['alamat']);
-$fotoLama      = $_POST['fotoLama'];
+$fotoLama      = $_POST['gambarLama'];
 
 $namaFileBaru = $fotoLama; // Default menggunakan foto lama
 
@@ -49,11 +49,13 @@ if ($_FILES['gambar']['error'] !== UPLOAD_ERR_NO_FILE) {
     }
 
     // Buat nama file baru untuk disimpan
-    $namaFileBaru = uniqid() . '.' . $ekstensiGambar;
+    $namaFileBaru = $id_anggota . '.' . $ekstensiGambar;
 
     // Pindahkan file ke folder tujuan
     move_uploaded_file($tmpName, '../src/uploadAnggota/' . $namaFileBaru);
 }
+
+
 
 // Query update data anggota
 $query = "UPDATE anggota SET 
@@ -61,7 +63,7 @@ $query = "UPDATE anggota SET
             ALAMAT = '$alamat',
             NOTELP = '$notelp',
             FOTO = '$namaFileBaru'
-          WHERE ID_ANGGOTA = '$id_anggota'";
+            WHERE ID_ANGGOTA = '$id_anggota'";
 
 if (mysqli_query($conn, $query) == true) {
     echo "
