@@ -5,7 +5,9 @@ require '../logic/koneksi.php';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $queryAnggota = mysqli_query($conn ,"SELECT * FROM anggotaLogin_view WHERE ID_ANGGOTA = '$id'");
+    $queryBuku = mysqli_query($conn ,"SELECT * FROM buku WHERE ID_BUKU = '$id'");
     $dataAnggota  = mysqli_fetch_assoc($queryAnggota);
+    $dataBuku  = mysqli_fetch_assoc($queryBuku);
     $data = $dataAnggota;
 }
 
@@ -43,7 +45,7 @@ if (!file_exists($file)) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8" />
@@ -58,33 +60,34 @@ if (!file_exists($file)) {
 <body class="bg-slate-200">
 
     <!-- Header start -->
-    <header class="border-spacing-7 border-primary flex absolute top-0 left-0 z-10 w-full shadow-lg">
-        <nav class="bg-primary h-full flex items-center justify-between relative w-full">
-            <!-- Logo -->
-            <div class="px-4">
-                <a href="#home" class="font-bold text-xl text-gradasi block py-6">Perpustakaan</a>
-            </div>
-            <!-- Gambar Profil -->
-            <div class="flex items-center px-4">
-                <div class="dropdown">
-                    <div tabindex="0" role="button" class="m-1">
-                        <img src="../src/uploadAnggota/<?php echo $_SESSION['foto']; ?>" alt="Profile Picture"
-                            class="rounded-full bg-gradasi bg-cover w-12 h-12">
+    <div class="navbar bg-primary">
+        <div class="flex-1">
+            <a href="#home" class="btn  btn-ghost text-xl font-bold text-gradasi">Perpustakaan</a>
+        </div>
+        <div class="flex-none gap-2">
+            <!-- <div class="form-control">
+                <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
+            </div> -->
+            <div class="dropdown dropdown-end">
+                <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+                    <div class="w-10 rounded-full">
+                        <img alt="Tailwind CSS Navbar component"
+                            src="../src/uploadAnggota/<?php echo $_SESSION['foto']; ?>" />
                     </div>
-                    <ul tabindex="0"
-                        class="dropdown-content menu bg-base-100 mx-10 rounded-md z-[1] w-32 shadow -left-28">
-                        <li><a href="?page=profile&id=<?php echo $_SESSION['id_anggota']; ?>">Profile</a></li>
-                        <li><a href="../logic/logout.php">Logout</a></li>
-                    </ul>
                 </div>
+                <ul tabindex="0"
+                    class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                    <li><a href="?page=profile&id=<?php echo $_SESSION['id_anggota']; ?>">Profile</a></li>
+                    <li><a href="../logic/logout.php">Logout</a></li>
+                </ul>
             </div>
-        </nav>
-    </header>
+        </div>
+    </div>
 
     <!-- Header end -->
 
     <!-- Section main -->
-    <section id="menu" class="pt-28">
+    <section id="menu" class="pt-12">
         <div class="container w-full lg:w-4/5 xl:w-3/4 mx-auto">
             <div class="flex flex-wrap justify-center">
                 <!-- Card 1 -->
@@ -157,7 +160,7 @@ if (!file_exists($file)) {
         const fileName = this.files[0] ? this.files[0].name : "Belum ada file dipilih";
         document.getElementById('file-name').textContent = fileName;
     });
-
+    //Input type date custom
     flatpickr("#datepicker", {
         dateFormat: "Y-m-d", // Format tanggal
         altInput: true, // Menampilkan input alternatif
@@ -168,6 +171,8 @@ if (!file_exists($file)) {
             firstDayOfWeek: 1, // Senin sebagai hari pertama
         },
     });
+    </script>
+
     </script>
 </body>
 

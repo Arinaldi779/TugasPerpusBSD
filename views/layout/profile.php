@@ -1,7 +1,10 @@
 <?php 
-// if($_SESSION['status']==""){
-//     header("location:../index.php?alert=belum_login");
-// }
+if($_SESSION['status']==""){
+    header("location:../index.php?alert=belum_login");
+}
+
+    
+
 
 // var_dump($Profile);exit;
 ?>

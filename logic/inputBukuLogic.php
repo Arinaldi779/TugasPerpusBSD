@@ -1,8 +1,8 @@
 <?php 
 require 'koneksi.php';
 
-$namaBuku       = mysqli_query($conn,"SELECT * FROM buku");
-$namaBukuBaru   = mysqli_fetch_assoc($namaBuku);
+// $namaBuku       = mysqli_query($conn,"SELECT * FROM buku");
+// $namaBukuBaru   = mysqli_fetch_assoc($namaBuku);
 // var_dump($namaBuku);exit;
 
 $id_buku          = htmlspecialchars($_POST['id_buku']);
