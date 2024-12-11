@@ -27,9 +27,11 @@ $queryBuku = mysqli_query($conn, "SELECT * FROM buku WHERE STOK > 0");
                             </summary>
                             <div class="collapse-content h-36">
                                 <p><?php echo $dataBuku['SINOPSIS']; ?></p>
+                                <p class="prose"><span>Pengarang :</span><?php echo $dataBuku['PENGARANG']; ?></p>
                             </div>
                         </details>
                         <!-- Tombol Aksi -->
+                        <?php if($_SESSION['status'] == 1) { ?>
                         <div class="flex space-x-1">
                             <a href="?page=editBuku&id=<?php echo $dataBuku['ID_BUKU'] ?>"
                                 class="px-3 py-1 bg-yellow-500 text-white text-xs font-semibold rounded hover:bg-yellow-600 focus:outline-none focus:ring focus:ring-yellow-300">
@@ -39,6 +41,14 @@ $queryBuku = mysqli_query($conn, "SELECT * FROM buku WHERE STOK > 0");
                                 class="px-3 py-1 bg-red-600 text-white text-xs font-semibold rounded hover:bg-red-700 focus:outline-none focus:ring focus:ring-red-300">
                                 Hapus
                             </button>
+                            <?php } ?>
+                            <form action="../logic/pinjamBukuLogic.php" method="post">
+                                <input type="hidden" name="pinjamBuku" value="<?php echo $dataBuku['ID_BUKU']; ?>">
+                                <button type="submit"
+                                    class="px-3 py-1 bg-success text-white text-xs font-semibold rounded hover:bg-success focus:outline-none focus:ring focus:ring-green-300">
+                                    Pinjam
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
