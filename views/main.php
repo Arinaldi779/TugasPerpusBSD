@@ -57,6 +57,9 @@ switch ($page) {
     case 'tablePinjam':
         $file = 'layout/tablePinjam.php';
         break;
+    case 'tableLog':
+        $file = 'layout/tableLog.php';
+        break;
     
     default:
         # code...
@@ -143,9 +146,10 @@ if (!file_exists($file)) {
                 </div>
                 <!-- Card 3 -->
                 <div class="px-4 my-2 w-full sm:w-1/2 md:w-1/2 lg:w-1/4 xl:w-1/4">
-                    <div class="bg-red-600 h-24 rounded-md">
-                        <h3 class="text-color3 font-semibold text-sm text-center">Log Kembali</h3>
-                        <h2 class="text-2xl text-center mt-2 text-color3 font-bold">90</h2>
+                    <div class="bg-indigo-700 h-24 rounded-md">
+                        <h3 class="text-color3 font-semibold text-sm text-center">Peminjaman</h3>
+                        <h2 class="text-2xl text-center mt-2 text-color3 font-bold"><?php echo $countPinjam['total']; ?>
+                        </h2>
                         <a href="#"
                             class="block w-full text-center font-semibold mt-1 hover:text-black py-1 backdrop-brightness-125 bg-white/30">
                             Detail &#8680;
@@ -154,8 +158,8 @@ if (!file_exists($file)) {
                 </div>
                 <!-- Card 4 -->
                 <div class="px-4 my-2 w-full sm:w-1/2 md:w-1/2 lg:w-1/4 xl:w-1/4">
-                    <div class="bg-indigo-700 h-24 rounded-md">
-                        <h3 class="text-color3 font-semibold text-sm text-center">Peminjaman</h3>
+                    <div class="bg-red-600 h-24 rounded-md">
+                        <h3 class="text-color3 font-semibold text-sm text-center">Log Kembali</h3>
                         <h2 class="text-2xl text-center mt-2 text-color3 font-bold">90</h2>
                         <a href="#"
                             class="block w-full text-center font-semibold mt-1 hover:text-black py-1 backdrop-brightness-125 bg-white/30">
