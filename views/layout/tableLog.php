@@ -11,7 +11,9 @@
                 <th class="border border-gray-300 px-4 py-2 font-medium text-gray-600">Anggota</th>
                 <th class="border border-gray-300 px-4 py-2 font-medium text-gray-600">Buku</th>
                 <th class="border border-gray-300 px-4 py-2 font-medium text-gray-600">Tanggal Pinjam</th>
+                <?php if($_SESSION['status'] == 1) { ?>
                 <th class="border border-gray-300 px-4 py-2 font-medium text-gray-600">Aksi</th>
+                <?php } ?>
             </tr>
         </thead>
         <tbody>
@@ -21,10 +23,11 @@
                 <td class="border border-gray-300 px-4 py-2">johndoe@example.com</td>
                 <td class="border border-gray-300 px-4 py-2">johndoe@example.com</td>
                 <td class="border border-gray-300 px-4 py-2">johndoe@example.com</td>
+                <?php if($_SESSION['status'] == 1) { ?>
                 <td class="border border-gray-300 px-4 py-2">
-                    <button class="text-white bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded">Edit</button>
                     <button class="text-white bg-red-500 hover:bg-red-600 px-3 py-1 rounded ml-2">Delete</button>
                 </td>
+                <?php } ?>
             </tr>
         </tbody>
     </table>

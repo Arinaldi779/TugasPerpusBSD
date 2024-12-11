@@ -39,10 +39,10 @@ $queryBuku = mysqli_query($conn, "SELECT * FROM buku WHERE STOK > 0");
                             class="px-3 py-1 bg-yellow-500 text-white text-xs font-semibold rounded hover:bg-yellow-600 focus:outline-none focus:ring focus:ring-yellow-300">
                             Edit
                         </a>
-                        <button
+                        <a href="../logic/hapusBukuLogic.php?id=<?php echo $dataBuku['ID_BUKU'] ?>"
                             class="px-3 py-1 bg-red-600 text-white text-xs font-semibold rounded hover:bg-red-700 focus:outline-none focus:ring focus:ring-red-300">
                             Hapus
-                        </button>
+                        </a>
                         <?php } ?>
                         <form action="../logic/pinjamBukuLogic.php" method="post">
                             <input type="hidden" name="pinjamBuku" value="<?php echo $dataBuku['ID_BUKU']; ?>">

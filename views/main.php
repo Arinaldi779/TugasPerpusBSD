@@ -150,7 +150,7 @@ if (!file_exists($file)) {
                         <h3 class="text-color3 font-semibold text-sm text-center">Peminjaman</h3>
                         <h2 class="text-2xl text-center mt-2 text-color3 font-bold"><?php echo $countPinjam['total']; ?>
                         </h2>
-                        <a href="#"
+                        <a href="?page=tablePinjam"
                             class="block w-full text-center font-semibold mt-1 hover:text-black py-1 backdrop-brightness-125 bg-white/30">
                             Detail &#8680;
                         </a>
@@ -161,7 +161,7 @@ if (!file_exists($file)) {
                     <div class="bg-red-600 h-24 rounded-md">
                         <h3 class="text-color3 font-semibold text-sm text-center">Log Kembali</h3>
                         <h2 class="text-2xl text-center mt-2 text-color3 font-bold">90</h2>
-                        <a href="#"
+                        <a href="?page=tableLog"
                             class="block w-full text-center font-semibold mt-1 hover:text-black py-1 backdrop-brightness-125 bg-white/30">
                             Detail &#8680;
                         </a>
