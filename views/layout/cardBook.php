@@ -1,6 +1,20 @@
 <?php 
 $queryBuku = mysqli_query($conn, "SELECT * FROM buku WHERE STOK > 0");    
+
+if(isset($_GET['cari'])) {
+    $cari = $_GET['cari'];
+    $where = "ID_BUKU LIKE '%$cari%' 
+    OR NAMA_BUKU LIKE '%$cari%' 
+    OR PENGARANG LIKE '%$cari%' 
+    OR PENERBIT LIKE '%$cari%' 
+    OR TAHUN_TERBIT LIKE '%$cari%' 
+    OR SINOPSIS LIKE '%$cari%'";
+
+// Query untuk mendapatkan data buku sesuai dengan pencarian
+$queryBuku = mysqli_query($conn, "SELECT * FROM buku WHERE STOK > 0 AND ($where)");
+}
 ?>
+
 <section class="py-12 px-4">
     <div class="container mx-auto rounded-md">
         <?php if($_SESSION['status'] == 1) { ?>
@@ -9,6 +23,12 @@ $queryBuku = mysqli_query($conn, "SELECT * FROM buku WHERE STOK > 0");
             Input Buku
         </a>
         <?php } ?>
+        <form action="main.php?page=tablePinjam" method="get" class="mt-12 px-2">
+            <input type="hidden" name="page" value="cardBook">
+            <input type="text" name="cari" id="" placeholder="Cari" class="p-2 rounded-sm"
+                value="<?php echo isset($_GET['cari']) ? htmlspecialchars($_GET['cari']) : ''; ?>">
+            <button type="submit" class="bg-green-400 mx-2 px-4 py-2 rounded-md">Cari</button>
+        </form>
 
         <div class="grid grid-cols-1 justify-center sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-5 ">
             <!-- Card Buku -->
@@ -27,8 +47,12 @@ $queryBuku = mysqli_query($conn, "SELECT * FROM buku WHERE STOK > 0");
                         <summary class="text-sm font-medium text-blue-600 cursor-pointer">Details</summary>
                         <div class="mt-2 text-sm text-gray-600">
                             <p><?php echo $dataBuku['SINOPSIS']; ?></p>
-                            <p class="mt-1"><span class="font-semibold">Pengarang:</span>
+                            <p class="mt-1"><span class="font-medium">Pengarang:</span>
                                 <?php echo $dataBuku['PENGARANG']; ?></p>
+                            <p class="mt-1"><span class="font-medium">Penerbit:</span>
+                                <?php echo $dataBuku['PENERBIT']; ?></p>
+                            <p class="mt-1"><span class="font-medium">Tahun Terbit:</span>
+                                <?php echo $dataBuku['TAHUN_TERBIT']; ?></p>
                         </div>
                     </details>
 
