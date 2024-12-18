@@ -22,8 +22,8 @@
                 <td class="border border-gray-300 px-4 py-2">johndoe@example.com</td>
                 <td class="border border-gray-300 px-4 py-2">johndoe@example.com</td>
                 <td class="border border-gray-300 px-4 py-2">
-                    <button class="text-white bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded">Edit</button>
-                    <button class="text-white bg-red-500 hover:bg-red-600 px-3 py-1 rounded ml-2">Delete</button>
+                    <button class="text-white bg-blue-500 hover:bg-blue-600 px-3 m-2 py-1 rounded">Edit</button>
+                    <button class="text-white bg-red-500 hover:bg-red-600 px-3 py-1 m-2 rounded ml-2">Delete</button>
                 </td>
             </tr>
         </tbody>

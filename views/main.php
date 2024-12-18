@@ -21,7 +21,10 @@ if ($_SESSION['status'] == 0) {
 $queryPinjam = mysqli_query($conn, "SELECT * FROM pinjam_buku_view $where");
 $queryCountPinjam = mysqli_query($conn, "SELECT COUNT(*) as total FROM pinjam_buku_view $where");
 $countPinjam = mysqli_fetch_assoc($queryCountPinjam);
-
+// Count Log_kembali
+$queryKembali = mysqli_query($conn, "SELECT * FROM kembali_buku_view $where");
+$queryCountKembali = mysqli_query($conn, "SELECT COUNT(*) as total FROM pinjam_buku_view $where");
+$countKembali = mysqli_fetch_assoc($queryCountKembali);
 // Count Anggota
 $queryAllAnggota = mysqli_query($conn, "SELECT COUNT(*) as total FROM anggotaLogin_view");
 $countAnggota = mysqli_fetch_assoc($queryAllAnggota);
@@ -67,7 +70,7 @@ switch ($page) {
 }
 
 // File layout default
-$file = "layout/$page.php";
+$file = "layout/$page.php";     
 
 // Periksa apakah file layout ada, jika tidak, gunakan file default
 if (!file_exists($file)) {
@@ -115,7 +118,7 @@ if (!file_exists($file)) {
     </div>
 
     <!-- Header end -->
-
+    <?php include 'component/alert.php' ?>
     <!-- Section main -->
     <section id="menu" class="pt-12">
         <div class="container w-full lg:w-4/5 xl:w-3/4 mx-auto">
@@ -160,7 +163,8 @@ if (!file_exists($file)) {
                 <div class="px-4 my-2 w-full sm:w-1/2 md:w-1/2 lg:w-1/4 xl:w-1/4">
                     <div class="bg-red-600 h-24 rounded-md">
                         <h3 class="text-color3 font-semibold text-sm text-center">Log Kembali</h3>
-                        <h2 class="text-2xl text-center mt-2 text-color3 font-bold">90</h2>
+                        <h2 class="text-2xl text-center mt-2 text-color3 font-bold">
+                            <?php echo $countKembali['total']; ?></h2>
                         <a href="?page=tableLog"
                             class="block w-full text-center font-semibold mt-1 hover:text-black py-1 backdrop-brightness-125 bg-white/30">
                             Detail &#8680;

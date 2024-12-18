@@ -11,24 +11,28 @@
                 <th class="border border-gray-300 px-4 py-2 font-medium text-gray-600">Anggota</th>
                 <th class="border border-gray-300 px-4 py-2 font-medium text-gray-600">Buku</th>
                 <th class="border border-gray-300 px-4 py-2 font-medium text-gray-600">Tanggal Pinjam</th>
+                <th class="border border-gray-300 px-4 py-2 font-medium text-gray-600">Tanggal Kembali</th>
                 <?php if($_SESSION['status'] == 1) { ?>
                 <th class="border border-gray-300 px-4 py-2 font-medium text-gray-600">Aksi</th>
                 <?php } ?>
             </tr>
         </thead>
         <tbody>
+            <?php while($dataKembali = mysqli_fetch_assoc($queryKembali)) { ?>
             <tr class="hover:bg-gray-50">
-                <td class="border border-gray-300 px-4 py-2">1</td>
-                <td class="border border-gray-300 px-4 py-2">John Doe</td>
-                <td class="border border-gray-300 px-4 py-2">johndoe@example.com</td>
-                <td class="border border-gray-300 px-4 py-2">johndoe@example.com</td>
-                <td class="border border-gray-300 px-4 py-2">johndoe@example.com</td>
+                <td class="border border-gray-300 px-4 py-2"><?php echo $nomor++; ?></td>
+                <td class="border border-gray-300 px-4 py-2"><?php echo $dataKembali['ID']; ?></td>
+                <td class="border border-gray-300 px-4 py-2"><?php echo $dataKembali['NAMA']; ?></td>
+                <td class="border border-gray-300 px-4 py-2"><?php echo $dataKembali['JUDUL']; ?></td>
+                <td class="border border-gray-300 px-4 py-2"><?php echo $dataKembali['TANGGAL_PINJAM']; ?></td>
+                <td class="border border-gray-300 px-4 py-2"><?php echo $dataKembali['TANGGAL_KEMBALI']; ?></td>
                 <?php if($_SESSION['status'] == 1) { ?>
                 <td class="border border-gray-300 px-4 py-2">
                     <button class="text-white bg-red-500 hover:bg-red-600 px-3 py-1 rounded ml-2">Delete</button>
                 </td>
                 <?php } ?>
             </tr>
+            <?php } ?>
         </tbody>
     </table>
 </div>

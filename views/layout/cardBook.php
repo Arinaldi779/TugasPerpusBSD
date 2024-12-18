@@ -3,7 +3,7 @@ $queryBuku = mysqli_query($conn, "SELECT * FROM buku WHERE STOK > 0");
 ?>
 <section class="py-12 px-4">
     <div class="container mx-auto rounded-md">
-        <?php if($_SESSION['status'] == 0) { ?>
+        <?php if($_SESSION['status'] == 1) { ?>
         <a href="?page=inputBuku"
             class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-4 py-2 rounded-md shadow-md inline-block">
             Input Buku

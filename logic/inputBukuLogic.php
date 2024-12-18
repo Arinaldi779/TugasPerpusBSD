@@ -71,7 +71,7 @@ $query = "INSERT INTO buku VALUES
                                 '$namaFileBaru'
                                 )";
         if(mysqli_query($conn,$query)){
-            echo "
+                echo "
                 <script>
                 alert('Data Buku Berhasil di Tambahkan');
                 window.location.href = '../views/main.php?page=cardBook'

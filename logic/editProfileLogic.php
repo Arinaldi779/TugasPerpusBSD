@@ -55,6 +55,7 @@ if ($_FILES['gambar']['error'] !== UPLOAD_ERR_NO_FILE) {
     move_uploaded_file($tmpName, '../src/uploadAnggota/' . $namaFileBaru);
 }
 
+// exit;
 
 
 // Query update data anggota
@@ -65,7 +66,7 @@ $query = "UPDATE anggota SET
             FOTO = '$namaFileBaru'
             WHERE ID_ANGGOTA = '$id_anggota'";
 
-if (mysqli_query($conn, $query) == true) {
+if (mysqli_query($conn, $query)) {
     echo "
     <script>
     alert('Data berhasil diubah!');

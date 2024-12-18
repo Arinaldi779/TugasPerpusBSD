@@ -60,7 +60,7 @@ if ($_FILES['gambar']['error'] !== UPLOAD_ERR_NO_FILE) {
     move_uploaded_file($tmpName, '../src/uploadBuku/' . $namaFileBaru);
 }
 
-var_dump($fotoLama);
+// var_dump($fotoLama);
 // exit;
 
 
@@ -76,11 +76,11 @@ $query = "UPDATE buku SET
             FOTO = '$namaFileBaru'
             WHERE ID_BUKU = '$id_buku'";
 
-if (mysqli_query($conn, $query) == true) {
+if (mysqli_query($conn, $query)) {
     echo "
     <script>
     alert('Data berhasil diubah!');
-    window.location.href = '../views/main.php?page=&cardbook';
+    window.location.href = '../views/main.php?page=cardbook';
     </script>
     ";
 } else {
